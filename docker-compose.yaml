@@ -4,9 +4,3 @@ services:
     image: nginx:latest
       ports:
         - "80:80"
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    command: python manage.py runserver
