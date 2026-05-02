@@ -1,0 +1,145 @@
+/*
+ * Meraki Roots header sticky fix v3
+ * Purpose:
+ * - Scope logo shrinking to the HEADER only.
+ * - Stop footer logo from being affected by scroll state.
+ * - Force a true sticky/fixed header even when OceanWP wrapper CSS blocks position: sticky.
+ */
+
+/* 1) Undo v2's accidental global footer-logo shrink */
+body.mr-header-condensed footer .custom-logo-link img,
+body.mr-header-condensed #footer .custom-logo-link img,
+body.mr-header-condensed #footer-widgets .custom-logo-link img,
+body.mr-header-condensed .site-footer .custom-logo-link img {
+  width: auto !important;
+  max-width: 150px !important;
+  height: auto !important;
+}
+
+/* 2) Force the actual site header to be fixed/sticky */
+html body #site-header,
+html body header#site-header,
+html body .site-header#site-header {
+  position: fixed !important;
+  top: var(--mr-admin-offset, 0px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 100000 !important;
+  transform: none !important;
+  transition: box-shadow .18s ease, min-height .18s ease, height .18s ease, background-color .18s ease !important;
+  will-change: box-shadow;
+}
+
+body.admin-bar {
+  --mr-admin-offset: 32px;
+}
+
+@media (max-width: 782px) {
+  body.admin-bar {
+    --mr-admin-offset: 46px;
+  }
+}
+
+body.mr-header-fixed-ready #wrap,
+body.mr-header-fixed-ready .site {
+  overflow: visible !important;
+}
+
+body.mr-header-condensed #site-header {
+  box-shadow: 0 8px 24px rgba(0,0,0,.10) !important;
+}
+
+/* 3) JS-added selectors. These are intentionally specific to header elements only. */
+#site-header .mr-header-logo-wrap,
+#site-header #site-logo,
+#site-header #site-logo-inner,
+#site-header .site-branding,
+#site-header .custom-logo-link {
+  transition: width .2s ease, height .2s ease, transform .2s ease, margin .2s ease !important;
+}
+
+#site-header .mr-header-logo-img,
+#site-header img.custom-logo,
+#site-header #site-logo img,
+#site-header #site-logo-inner img,
+#site-header .site-logo img,
+#site-header .custom-logo-link img {
+  width: 132px !important;
+  max-width: 132px !important;
+  max-height: 132px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  transition: width .2s ease, max-width .2s ease, max-height .2s ease, transform .2s ease !important;
+}
+
+/* Condensed header logo: same visual height class as nav row */
+body.mr-header-condensed #site-header .mr-header-logo-img,
+body.mr-header-condensed #site-header img.custom-logo,
+body.mr-header-condensed #site-header #site-logo img,
+body.mr-header-condensed #site-header #site-logo-inner img,
+body.mr-header-condensed #site-header .site-logo img,
+body.mr-header-condensed #site-header .custom-logo-link img {
+  width: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+}
+
+/* Keep the center logo over the black/white nav split without touching footer branding. */
+#site-header .mr-header-logo-wrap,
+#site-header #site-logo {
+  z-index: 30 !important;
+}
+
+/* Header inner row compaction on scroll */
+#site-header #site-header-inner,
+#site-header .oceanwp-container,
+#site-header .container,
+#site-header .custom-header,
+#site-header .header-top {
+  transition: min-height .2s ease, height .2s ease, padding .2s ease !important;
+}
+
+body.mr-header-condensed #site-header #site-header-inner {
+  min-height: 56px !important;
+}
+
+/* Make menu item height follow condensed header. */
+body.mr-header-condensed #site-header #site-navigation-wrap .dropdown-menu > li,
+body.mr-header-condensed #site-header #site-navigation .dropdown-menu > li {
+  min-height: 56px !important;
+}
+
+/* Guard against page content sliding under the fixed header before JS has measured it. */
+body.mr-header-fixed-ready {
+  padding-top: var(--mr-fixed-header-space, 104px) !important;
+}
+
+body.home.mr-header-fixed-ready {
+  padding-top: var(--mr-fixed-header-space, 104px) !important;
+}
+
+/* Mobile: don't over-enlarge the centered logo. */
+@media (max-width: 767px) {
+  #site-header .mr-header-logo-img,
+  #site-header img.custom-logo,
+  #site-header #site-logo img,
+  #site-header #site-logo-inner img,
+  #site-header .site-logo img,
+  #site-header .custom-logo-link img {
+    width: 84px !important;
+    max-width: 84px !important;
+    max-height: 84px !important;
+  }
+
+  body.mr-header-condensed #site-header .mr-header-logo-img,
+  body.mr-header-condensed #site-header img.custom-logo,
+  body.mr-header-condensed #site-header #site-logo img,
+  body.mr-header-condensed #site-header #site-logo-inner img,
+  body.mr-header-condensed #site-header .site-logo img,
+  body.mr-header-condensed #site-header .custom-logo-link img {
+    width: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+  }
+}

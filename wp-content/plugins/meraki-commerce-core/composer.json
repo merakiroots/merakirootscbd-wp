@@ -1,0 +1,13 @@
+{
+  "name": "merakiroots/meraki-commerce-core",
+  "description": "Plugin-owned COA and compliance layer for Meraki Roots WooCommerce.",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "MerakiCommerceCore\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  }
+}

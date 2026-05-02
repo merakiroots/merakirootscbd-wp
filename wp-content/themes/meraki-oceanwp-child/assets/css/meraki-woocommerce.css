@@ -1,0 +1,203 @@
+.woocommerce ul.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--mr-space-xl);
+}
+
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+  display: none;
+}
+
+.woocommerce ul.products li.product {
+  width: auto !important;
+  margin: 0 !important;
+  float: none !important;
+  text-align: center;
+}
+
+.woocommerce ul.products li.product a img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--mr-white);
+  margin-bottom: var(--mr-space-md);
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  color: var(--mr-charcoal);
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0;
+}
+
+.mr-product-card__meta,
+.mr-product-card__trust {
+  color: var(--mr-muted);
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+.mr-product-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--mr-space-sm);
+  min-height: 40px;
+  padding-inline: 1rem;
+  border: 1px solid var(--mr-black);
+  background: var(--mr-white);
+  color: var(--mr-black);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.mr-product-card__cta:hover {
+  background: var(--mr-black);
+  color: var(--mr-white);
+}
+
+.woocommerce div.product {
+  width: min(100% - 32px, var(--mr-container));
+  margin-inline: auto;
+  padding-top: var(--mr-space-2xl);
+}
+
+.woocommerce div.product div.images img {
+  object-fit: contain;
+}
+
+.woocommerce div.product .product_title {
+  color: var(--mr-charcoal);
+}
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: var(--mr-charcoal);
+  font-weight: 800;
+}
+
+.mr-trust-icons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--mr-space-sm);
+  margin: var(--mr-space-lg) 0;
+}
+
+.mr-trust-icons__item {
+  display: grid;
+  place-items: center;
+  min-height: 82px;
+  padding: var(--mr-space-sm);
+  border: 1px solid var(--mr-border);
+  text-align: center;
+}
+
+.mr-trust-icons__item span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 0.35rem;
+  border: 1px solid var(--mr-black);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.mr-trust-icons__item strong {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mr-coa-callout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--mr-space-lg);
+  margin: var(--mr-space-lg) 0;
+  padding: var(--mr-space-lg);
+  border: 1px solid var(--mr-border);
+  background: var(--mr-panel);
+}
+
+.mr-coa-callout h3 {
+  margin: 0 0 var(--mr-space-sm);
+}
+
+.mr-coa-callout__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mr-space-md);
+  margin: 0;
+}
+
+.mr-coa-callout__meta div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.mr-coa-callout__meta dt {
+  color: var(--mr-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.mr-coa-callout__meta dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.mr-product-accordions {
+  clear: both;
+  padding-top: var(--mr-space-xl);
+}
+
+.mr-accordion {
+  border-top: 1px solid var(--mr-border);
+}
+
+.mr-accordion:last-child {
+  border-bottom: 1px solid var(--mr-border);
+}
+
+.mr-accordion__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: var(--mr-space-md);
+  border: 0;
+  background: var(--mr-panel);
+  color: var(--mr-charcoal);
+  font-weight: 800;
+  text-align: left;
+}
+
+.mr-accordion__panel {
+  padding: var(--mr-space-lg);
+  background: var(--mr-white);
+}
+
+.mr-free-shipping-message,
+.mr-checkout-disclaimer {
+  padding: var(--mr-space-md);
+  border: 1px solid var(--mr-border);
+  background: var(--mr-panel);
+}
+
+.woocommerce-checkout-review-order {
+  background: var(--mr-black);
+  color: var(--mr-white);
+  padding: var(--mr-space-lg);
+}
+
+.woocommerce-checkout-review-order a,
+.woocommerce-checkout-review-order th,
+.woocommerce-checkout-review-order td,
+.woocommerce-checkout-review-order strong {
+  color: var(--mr-white);
+}

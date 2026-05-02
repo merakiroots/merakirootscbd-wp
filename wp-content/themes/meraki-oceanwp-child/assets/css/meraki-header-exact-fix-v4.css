@@ -1,0 +1,294 @@
+/*
+ * Meraki Roots Header Exact Fix v4
+ *
+ * This targets the actual current header markup:
+ * <header class="mr-header">
+ *   <div class="mr-header__inner">
+ *     <nav class="mr-header__nav mr-header__nav-left">...</nav>
+ *     <div class="mr-header__logo">...</div>
+ *     <nav class="mr-header__nav mr-header__nav-right">...</nav>
+ *   </div>
+ * </header>
+ *
+ * It intentionally does NOT target footer logos.
+ */
+
+:root {
+  --mr-announcement-height: 32px;
+  --mr-header-height-open: 82px;
+  --mr-header-height-compact: 58px;
+  --mr-header-logo-open: 126px;
+  --mr-header-logo-compact: 48px;
+  --mr-black: #000;
+  --mr-white: #fff;
+  --mr-ink: #111;
+  --mr-header-shadow: 0 8px 24px rgba(0,0,0,.10);
+}
+
+/* Remove the broken previous v3 body padding/fixed state impact if still active. */
+body.mr-header-fixed-ready,
+body.home.mr-header-fixed-ready {
+  padding-top: 0 !important;
+}
+
+/* Announcement/free shipping bar, when present. */
+.mr-announcement,
+.mr-topbar,
+.mr-free-shipping,
+.mr-shipping-bar {
+  position: fixed !important;
+  top: var(--mr-admin-bar-offset, 0px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100001 !important;
+  min-height: var(--mr-announcement-height);
+}
+
+/* Actual desktop header. */
+html body .mr-header {
+  position: fixed !important;
+  top: calc(var(--mr-admin-bar-offset, 0px) + var(--mr-announcement-offset, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 100000 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: none !important;
+  transition: height .2s ease, box-shadow .2s ease, background-color .2s ease !important;
+}
+
+body.admin-bar {
+  --mr-admin-bar-offset: 32px;
+}
+
+@media (max-width: 782px) {
+  body.admin-bar {
+    --mr-admin-bar-offset: 46px;
+  }
+}
+
+/* Body top spacing is set by JS; fallback here prevents overlay on first paint. */
+html body.mr-exact-header-ready {
+  padding-top: var(--mr-header-stack-height, 114px) !important;
+}
+
+/* Header inner split layout. */
+html body .mr-header .mr-header__inner {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  align-items: stretch !important;
+  height: var(--mr-header-height-open) !important;
+  min-height: var(--mr-header-height-open) !important;
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  transition: height .2s ease, min-height .2s ease !important;
+}
+
+html body.mr-header-condensed .mr-header .mr-header__inner {
+  height: var(--mr-header-height-compact) !important;
+  min-height: var(--mr-header-height-compact) !important;
+}
+
+html body.mr-header-condensed .mr-header {
+  box-shadow: var(--mr-header-shadow) !important;
+}
+
+/* Left side white, right side black, matching the old Shopify feel. */
+html body .mr-header .mr-header__nav-left {
+  background: var(--mr-white) !important;
+  color: var(--mr-black) !important;
+  justify-content: flex-end !important;
+  padding-right: clamp(90px, 8vw, 150px) !important;
+}
+
+html body .mr-header .mr-header__nav-right {
+  background: var(--mr-black) !important;
+  color: var(--mr-white) !important;
+  justify-content: flex-start !important;
+  padding-left: clamp(90px, 8vw, 150px) !important;
+}
+
+/* Navs must remain visible. */
+html body .mr-header .mr-header__nav {
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+html body .mr-header .mr-menu,
+html body .mr-header .mr-menu > li {
+  display: flex !important;
+  align-items: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  list-style: none !important;
+  margin: 0 !important;
+}
+
+html body .mr-header .mr-menu {
+  gap: clamp(18px, 2vw, 34px) !important;
+  padding: 0 !important;
+  height: 100% !important;
+}
+
+html body .mr-header .mr-menu > li > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: var(--mr-header-height-open) !important;
+  color: inherit !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .01em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  padding: 0 !important;
+  transition: min-height .2s ease, opacity .2s ease !important;
+}
+
+html body.mr-header-condensed .mr-header .mr-menu > li > a {
+  min-height: var(--mr-header-height-compact) !important;
+}
+
+/* Center logo. */
+html body .mr-header .mr-header__logo {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  z-index: 100004 !important;
+  width: var(--mr-header-logo-open) !important;
+  height: var(--mr-header-logo-open) !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  transition: width .2s ease, height .2s ease, transform .2s ease !important;
+}
+
+html body.mr-header-condensed .mr-header .mr-header__logo {
+  width: var(--mr-header-logo-compact) !important;
+  height: var(--mr-header-logo-compact) !important;
+}
+
+html body .mr-header .mr-header__logo .custom-logo-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+html body .mr-header .mr-header__logo img,
+html body .mr-header .mr-header__logo .custom-logo {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  transition: width .2s ease, max-width .2s ease, max-height .2s ease !important;
+}
+
+/* Utility menu: Account/Search/Cart as icons on far right. */
+html body .mr-header .mr-menu--utility {
+  margin-left: clamp(18px, 2vw, 34px) !important;
+  gap: 12px !important;
+}
+
+html body .mr-header .mr-menu--utility li a {
+  width: 28px !important;
+  min-width: 28px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+html body .mr-header .mr-menu--utility li a::before {
+  content: "" !important;
+  display: block !important;
+  width: 21px !important;
+  height: 21px !important;
+  background: currentColor !important;
+  -webkit-mask-position: center !important;
+  mask-position: center !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-size: contain !important;
+  mask-size: contain !important;
+}
+
+html body .mr-header .mr-menu--utility li:nth-child(1) a::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-4.42 0-8 2.24-8 5v1c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-1c0-2.76-3.58-5-8-5Z'/%3E%3C/svg%3E") !important;
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-4.42 0-8 2.24-8 5v1c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-1c0-2.76-3.58-5-8-5Z'/%3E%3C/svg%3E") !important;
+}
+
+html body .mr-header .mr-menu--utility li:nth-child(2) a::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M10 2a8 8 0 0 1 6.32 12.9l4.39 4.39-1.42 1.42-4.39-4.39A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 10 4Z'/%3E%3C/svg%3E") !important;
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M10 2a8 8 0 0 1 6.32 12.9l4.39 4.39-1.42 1.42-4.39-4.39A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 10 4Z'/%3E%3C/svg%3E") !important;
+}
+
+html body .mr-header .mr-menu--utility li:nth-child(3) a::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 .01 0H17ZM3 3h2.2l2.1 10.4A3 3 0 0 0 10.24 16H17a3 3 0 0 0 2.83-2.02L22 7H7.1l-.4-2H3V3Zm4.5 6H19.3l-1.37 4.35A1 1 0 0 1 16.98 14h-6.74a1 1 0 0 1-.98-.8L7.5 9Z'/%3E%3C/svg%3E") !important;
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 .01 0H17ZM3 3h2.2l2.1 10.4A3 3 0 0 0 10.24 16H17a3 3 0 0 0 2.83-2.02L22 7H7.1l-.4-2H3V3Zm4.5 6H19.3l-1.37 4.35A1 1 0 0 1 16.98 14h-6.74a1 1 0 0 1-.98-.8L7.5 9Z'/%3E%3C/svg%3E") !important;
+}
+
+/* Hide mobile header on desktop; show desktop header. */
+html body .mr-mobile-header {
+  display: none !important;
+}
+
+/* Mobile: use mobile header fixed, hide desktop header. */
+@media (max-width: 767px) {
+  html body .mr-header {
+    display: none !important;
+  }
+
+  html body .mr-mobile-header {
+    position: fixed !important;
+    top: var(--mr-admin-bar-offset, 0px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100000 !important;
+    display: block !important;
+    background: #fff !important;
+  }
+
+  html body .mr-mobile-header__inner {
+    min-height: 66px !important;
+  }
+
+  html body .mr-mobile-header__logo img {
+    width: 72px !important;
+    max-width: 72px !important;
+    height: auto !important;
+  }
+
+  html body.mr-exact-header-ready {
+    padding-top: var(--mr-header-stack-height, 66px) !important;
+  }
+}

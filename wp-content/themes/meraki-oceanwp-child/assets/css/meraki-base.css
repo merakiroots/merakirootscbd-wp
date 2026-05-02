@@ -1,0 +1,155 @@
+:root {
+  --mr-black: #000000;
+  --mr-white: #ffffff;
+  --mr-charcoal: #2e3234;
+  --mr-text: #222222;
+  --mr-muted: #777777;
+  --mr-light-muted: #a7a7a7;
+  --mr-border: #e4e4e4;
+  --mr-panel: #eeeeee;
+  --mr-panel-dark: #d9d9d9;
+  --mr-error: #e35252;
+  --mr-sale: #2e3234;
+  --mr-accent-energy: #f37021;
+  --mr-accent-sleep: #413184;
+  --mr-container: 1240px;
+  --mr-container-wide: 1440px;
+  --mr-announcement-height: 32px;
+  --mr-header-height: 72px;
+  --mr-logo-desktop: 118px;
+  --mr-logo-mobile: 78px;
+  --mr-space-2xs: 0.25rem;
+  --mr-space-xs: 0.5rem;
+  --mr-space-sm: 0.75rem;
+  --mr-space-md: 1rem;
+  --mr-space-lg: 1.5rem;
+  --mr-space-xl: 2.5rem;
+  --mr-space-2xl: 4rem;
+  --mr-space-3xl: 6rem;
+  --mr-radius-sm: 2px;
+  --mr-radius-md: 6px;
+  --mr-transition: 180ms ease;
+  --mr-font-body: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mr-font-heading: "Lato", "Harmonia Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.mr-theme {
+  margin: 0;
+  font-family: var(--mr-font-body);
+  color: var(--mr-text);
+  background: var(--mr-white);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+body.mr-theme h1,
+body.mr-theme h2,
+body.mr-theme h3,
+body.mr-theme h4,
+body.mr-theme h5,
+body.mr-theme h6 {
+  font-family: var(--mr-font-heading);
+  color: var(--mr-charcoal);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+body.mr-theme h1 { font-size: clamp(2.2rem, 4vw, 3.75rem); }
+body.mr-theme h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
+body.mr-theme h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); }
+
+body.mr-theme a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mr-container {
+  width: min(100% - 32px, var(--mr-container));
+  margin-inline: auto;
+}
+
+.mr-container-wide {
+  width: min(100% - 24px, var(--mr-container-wide));
+  margin-inline: auto;
+}
+
+.mr-site-main {
+  min-height: 60vh;
+}
+
+.mr-button,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.single_add_to_cart_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.8rem 1.35rem;
+  border: 1px solid var(--mr-black);
+  background: var(--mr-black);
+  color: var(--mr-white) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background var(--mr-transition), color var(--mr-transition), border-color var(--mr-transition);
+}
+
+.mr-button:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.single_add_to_cart_button:hover {
+  background: var(--mr-white);
+  color: var(--mr-black) !important;
+}
+
+.mr-button--secondary {
+  background: var(--mr-white);
+  color: var(--mr-black) !important;
+}
+
+.mr-button--secondary:hover {
+  background: var(--mr-black);
+  color: var(--mr-white) !important;
+}
+
+.mr-kicker {
+  display: block;
+  margin-bottom: var(--mr-space-sm);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mr-section-heading {
+  text-align: center;
+  margin-bottom: var(--mr-space-xl);
+}
+
+.screen-reader-text:focus,
+.mr-skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 99999;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  clip: auto;
+  background: var(--mr-white);
+  color: var(--mr-black);
+  border: 2px solid var(--mr-black);
+}

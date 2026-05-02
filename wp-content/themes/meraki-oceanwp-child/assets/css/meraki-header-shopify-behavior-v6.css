@@ -1,0 +1,71 @@
+/* Meraki Header Shopify Behavior v6 */
+:root{
+  --mr-adminbar-h:0px;
+  --mr-topbar-h:32px;
+  --mr-header-open-h:72px;
+  --mr-header-compact-h:58px;
+  --mr-logo-open:118px;
+  --mr-logo-compact:54px;
+  --mr-center-open:124px;
+  --mr-center-compact:74px;
+  --mr-edge-pad:clamp(42px,5.3vw,96px);
+  --mr-nav-gap:clamp(26px,3.2vw,58px);
+}
+body.admin-bar{--mr-adminbar-h:32px}
+@media(max-width:782px){body.admin-bar{--mr-adminbar-h:46px}}
+html body,html body.mr-header-condensed{padding-top:0!important}
+html body .mr-announcement,html body .mr-topbar,html body .mr-free-shipping,html body .mr-shipping-bar{
+  position:fixed!important;top:var(--mr-adminbar-h)!important;left:0!important;right:0!important;z-index:100030!important;
+  height:var(--mr-topbar-h)!important;min-height:var(--mr-topbar-h)!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  background:#000!important;color:#fff!important;font-size:14px!important;font-weight:700!important;line-height:1!important;overflow:hidden!important;
+  opacity:1!important;visibility:visible!important;transform:translateY(0)!important;transition:transform .18s ease,opacity .18s ease,visibility .18s ease!important;
+}
+html body.mr-header-condensed .mr-announcement,html body.mr-header-condensed .mr-topbar,html body.mr-header-condensed .mr-free-shipping,html body.mr-header-condensed .mr-shipping-bar{
+  opacity:0!important;visibility:hidden!important;transform:translateY(calc(-1 * var(--mr-topbar-h)))!important;pointer-events:none!important;
+}
+html body .mr-header{
+  position:fixed!important;top:calc(var(--mr-adminbar-h) + var(--mr-topbar-h))!important;left:0!important;right:0!important;width:100%!important;
+  height:var(--mr-header-open-h)!important;min-height:var(--mr-header-open-h)!important;z-index:100020!important;background:transparent!important;overflow:visible!important;
+  display:block!important;opacity:1!important;visibility:visible!important;transform:none!important;box-shadow:none!important;transition:top .18s ease,height .18s ease,min-height .18s ease,box-shadow .18s ease!important;
+}
+html body.mr-header-condensed .mr-header{top:var(--mr-adminbar-h)!important;height:var(--mr-header-compact-h)!important;min-height:var(--mr-header-compact-h)!important;box-shadow:0 4px 16px rgba(0,0,0,.08)!important}
+html body:not(.home) #main,html body:not(.home) .site-main,html body:not(.home) main.site-main{padding-top:calc(var(--mr-topbar-h) + var(--mr-header-open-h) + 42px)!important}
+html body.mr-header-condensed:not(.home) #main,html body.mr-header-condensed:not(.home) .site-main,html body.mr-header-condensed:not(.home) main.site-main{padding-top:calc(var(--mr-header-compact-h) + 42px)!important}
+html body .mr-header .mr-header__inner{position:relative!important;display:block!important;width:100%!important;max-width:none!important;height:100%!important;margin:0!important;padding:0!important;overflow:visible!important;background:transparent!important}
+html body .mr-header .mr-header__nav-left{
+  position:absolute!important;top:0!important;left:0!important;width:50%!important;height:100%!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;
+  padding-left:var(--mr-edge-pad)!important;padding-right:var(--mr-center-open)!important;background:#fff!important;color:#000!important;overflow:visible!important;opacity:1!important;visibility:visible!important;
+}
+html body.mr-header-condensed .mr-header .mr-header__nav-left{padding-right:var(--mr-center-compact)!important}
+html body .mr-header .mr-header__nav-right{
+  position:absolute!important;top:0!important;right:0!important;width:50%!important;height:100%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  padding-left:var(--mr-center-open)!important;padding-right:var(--mr-edge-pad)!important;background:#000!important;color:#fff!important;overflow:visible!important;opacity:1!important;visibility:visible!important;
+}
+html body.mr-header-condensed .mr-header .mr-header__nav-right{padding-left:var(--mr-center-compact)!important}
+html body .mr-header .mr-menu,html body .mr-header .mr-menu>li{list-style:none!important;margin:0!important;padding:0!important;opacity:1!important;visibility:visible!important}
+html body .mr-header .mr-menu{display:flex!important;align-items:center!important;gap:var(--mr-nav-gap)!important;height:100%!important;min-width:0!important;flex:0 1 auto!important;overflow:visible!important}
+html body .mr-header .mr-menu>li{display:flex!important;align-items:center!important;height:100%!important;flex:0 0 auto!important}
+html body .mr-header .mr-menu>li>a{display:inline-flex!important;align-items:center!important;justify-content:center!important;height:100%!important;padding:0!important;margin:0!important;color:inherit!important;font-size:15px!important;font-weight:600!important;line-height:1!important;letter-spacing:.01em!important;text-decoration:none!important;white-space:nowrap!important;opacity:1!important;visibility:visible!important}
+html body .mr-header .mr-menu>li>a:hover{text-decoration:none!important;opacity:.72!important}
+html body .mr-header .mr-menu--utility{margin-left:auto!important;gap:24px!important;align-self:flex-start!important;padding-top:17px!important;height:100%!important}
+html body.mr-header-condensed .mr-header .mr-menu--utility{padding-top:13px!important}
+html body .mr-header .mr-menu--utility>li>a{width:24px!important;min-width:24px!important;height:24px!important;min-height:24px!important;padding:0!important;font-size:0!important;line-height:0!important;display:flex!important;align-items:center!important;justify-content:center!important}
+html body .mr-header .mr-menu--utility svg,html body .mr-header .mr-menu--utility i{width:21px!important;height:21px!important;font-size:21px!important;color:#fff!important;fill:#fff!important;stroke:#fff!important}
+html body .mr-header .mr-header__logo{position:absolute!important;top:50%!important;left:50%!important;z-index:100040!important;width:var(--mr-logo-open)!important;height:var(--mr-logo-open)!important;transform:translate(-50%,-50%)!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible!important;pointer-events:auto!important;transition:width .18s ease,height .18s ease!important}
+html body.mr-header-condensed .mr-header .mr-header__logo{width:var(--mr-logo-compact)!important;height:var(--mr-logo-compact)!important}
+html body .mr-header .mr-header__logo a,html body .mr-header .mr-header__logo .custom-logo-link{display:flex!important;width:100%!important;height:100%!important;align-items:center!important;justify-content:center!important}
+html body .mr-header .mr-header__logo img,html body .mr-header .mr-header__logo .custom-logo{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:100%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important}
+html body footer .custom-logo-link img,html body #footer .custom-logo-link img,html body #footer-widgets .custom-logo-link img,html body .site-footer .custom-logo-link img{width:auto!important;max-width:150px!important;height:auto!important}
+html body .mr-mobile-header{display:none!important}
+@media(max-width:767px){
+  html body{padding-top:66px!important}
+  html body .mr-announcement,html body .mr-topbar,html body .mr-free-shipping,html body .mr-shipping-bar,html body .mr-header{display:none!important}
+  html body .mr-mobile-header{position:fixed!important;top:var(--mr-adminbar-h)!important;left:0!important;right:0!important;z-index:100020!important;display:block!important;background:#fff!important}
+  html body .mr-mobile-header__inner{height:66px!important;min-height:66px!important}
+  html body .mr-mobile-header__logo img{width:72px!important;max-width:72px!important;height:auto!important}
+}
+@media(max-width:1180px) and (min-width:768px){
+  :root{--mr-logo-open:104px;--mr-logo-compact:48px;--mr-center-open:100px;--mr-center-compact:66px;--mr-nav-gap:22px;--mr-edge-pad:34px}
+  html body .mr-header .mr-menu>li>a{font-size:13px!important}
+  html body .mr-header .mr-menu--utility{gap:16px!important}
+}
