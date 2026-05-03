@@ -1,0 +1,172 @@
+name: wp-dev
+services:
+  db:
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    container_name: wp-dev-db
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: wordpress
+    image: mariadb:11.4
+    networks:
+      wpnet: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: db_data
+        target: /var/lib/mysql
+        volume: {}
+  mailhog:
+    container_name: wp-dev-mailhog
+    image: mailhog/mailhog:latest
+    networks:
+      wpnet: null
+    ports:
+      - mode: ingress
+        target: 8025
+        published: "8025"
+        protocol: tcp
+    restart: unless-stopped
+  phpmyadmin:
+    container_name: wp-dev-phpmyadmin
+    depends_on:
+      db:
+        condition: service_started
+        required: true
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: db
+      PMA_PORT: "3306"
+      UPLOAD_LIMIT: 256M
+    image: phpmyadmin:latest
+    networks:
+      wpnet: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8081"
+        protocol: tcp
+    restart: unless-stopped
+  wordpress:
+    build:
+      context: D:\wp-dev\docker
+      dockerfile: Dockerfile
+    container_name: wp-dev-wordpress
+    depends_on:
+      db:
+        condition: service_started
+        required: true
+      mailhog:
+        condition: service_started
+        required: true
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: "1"
+      COMPOSER_HOME: /tmp/composer
+      COMPOSER_ROOT_VERSION: 0.1.0
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_DEBUG', true );
+        define( 'WP_DEBUG_LOG', '/var/www/html/wp-content/debug-logs/debug.log' );
+        define( 'WP_DEBUG_DISPLAY', false );
+        define( 'SCRIPT_DEBUG', true );
+        define( 'SAVEQUERIES', true );
+        define( 'WP_ENVIRONMENT_TYPE', 'local' );
+        define( 'DISALLOW_FILE_EDIT', true );
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: wordpress
+    networks:
+      wpnet: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: wp_core
+        target: /var/www/html
+        volume: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\plugins
+        target: /var/www/html/wp-content/plugins
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\themes
+        target: /var/www/html/wp-content/themes
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\uploads
+        target: /var/www/html/wp-content/uploads
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\mu-plugins
+        target: /var/www/html/wp-content/mu-plugins
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\logs
+        target: /var/www/html/wp-content/debug-logs
+        bind: {}
+      - type: volume
+        source: composer_cache
+        target: /tmp/composer
+        volume: {}
+  wpcli:
+    container_name: wp-dev-wpcli
+    depends_on:
+      db:
+        condition: service_started
+        required: true
+      wordpress:
+        condition: service_started
+        required: true
+    entrypoint:
+      - wp
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: "1"
+      COMPOSER_HOME: /tmp/composer
+      COMPOSER_ROOT_VERSION: 0.1.0
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: wordpress
+    image: wordpress:cli
+    networks:
+      wpnet: null
+    volumes:
+      - type: volume
+        source: wp_core
+        target: /var/www/html
+        volume: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\plugins
+        target: /var/www/html/wp-content/plugins
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\themes
+        target: /var/www/html/wp-content/themes
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\uploads
+        target: /var/www/html/wp-content/uploads
+        bind: {}
+      - type: bind
+        source: D:\wp-dev\wp-content\mu-plugins
+        target: /var/www/html/wp-content/mu-plugins
+        bind: {}
+    working_dir: /var/www/html
+networks:
+  wpnet:
+    name: wp-dev_wpnet
+    driver: bridge
+volumes:
+  composer_cache:
+    name: wp-dev_composer_cache
+  db_data:
+    name: wp-dev_db_data
+  wp_core:
+    name: wp-dev_wp_core

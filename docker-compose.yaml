@@ -18,6 +18,25 @@ services:
     networks:
       - wpnet
 
+  composer:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: ${PROJECT_NAME}-composer
+    working_dir: /var/www/html/wp-content/plugins/my-plugin
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: "1"
+      COMPOSER_HOME: /tmp/composer
+    volumes:
+      - wp_core:/var/www/html
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./wp-content/themes:/var/www/html/wp-content/themes
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - composer_cache:/tmp/composer
+    networks:
+      - wpnet
+    entrypoint: composer
+
   wordpress:
     build:
       context: ./docker
@@ -34,28 +53,27 @@ services:
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
-      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
+
+      COMPOSER_ALLOW_SUPERUSER: "1"
+      COMPOSER_HOME: /tmp/composer
+      COMPOSER_ROOT_VERSION: "0.1.0"
+
       WORDPRESS_CONFIG_EXTRA: |
         define( 'WP_DEBUG', true );
-        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_LOG', '/var/www/html/wp-content/debug-logs/debug.log' );
         define( 'WP_DEBUG_DISPLAY', false );
         define( 'SCRIPT_DEBUG', true );
         define( 'SAVEQUERIES', true );
         define( 'WP_ENVIRONMENT_TYPE', 'local' );
         define( 'DISALLOW_FILE_EDIT', true );
-
-        add_action( 'phpmailer_init', function ( $$phpmailer ) {
-            $$phpmailer->isSMTP();
-            $$phpmailer->Host = 'mailhog';
-            $$phpmailer->Port = 1025;
-            $$phpmailer->SMTPAuth = false;
-        } );
     volumes:
       - wp_core:/var/www/html
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
       - ./wp-content/themes:/var/www/html/wp-content/themes
       - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ./logs:/var/www/html/wp-content/debug-logs
+      - composer_cache:/tmp/composer
     networks:
       - wpnet
 
@@ -70,34 +88,14 @@ services:
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
-
-      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
-
-      COMPOSER_ALLOW_SUPERUSER: "1"
-      COMPOSER_HOME: /tmp/composer
-
-      WORDPRESS_CONFIG_EXTRA: |
-        define( 'WP_DEBUG', true );
-        define( 'WP_DEBUG_LOG', true );
-        define( 'WP_DEBUG_DISPLAY', false );
-        define( 'SCRIPT_DEBUG', true );
-        define( 'SAVEQUERIES', true );
-        define( 'WP_ENVIRONMENT_TYPE', 'local' );
-        define( 'DISALLOW_FILE_EDIT', true );
-
-        add_action( 'phpmailer_init', function ( $phpmailer ) {
-            $phpmailer->isSMTP();
-            $phpmailer->Host = 'mailhog';
-            $phpmailer->Port = 1025;
-            $phpmailer->SMTPAuth = false;
-        } );
+      COMPOSER_ROOT_VERSION: "0.1.0"
     volumes:
       - wp_core:/var/www/html
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
       - ./wp-content/themes:/var/www/html/wp-content/themes
       - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ./logs:/var/www/html/wp-content/debug-logs
-      - composer_cache:/tmp/composer
     working_dir: /var/www/html
     networks:
       - wpnet
