@@ -1,0 +1,6 @@
+[mcp_servers.merakiroots_wp_dev]
+command = "npm"
+args = ["run", "mcp:stdio", "--silent"]
+cwd = "D:\\wp-dev"
+startup_timeout_sec = 20
+tool_timeout_sec = 120

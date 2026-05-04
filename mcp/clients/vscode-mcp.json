@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "merakiroots-wp-dev": {
+      "type": "stdio",
+      "command": "npm",
+      "args": ["run", "mcp:stdio", "--silent"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}
