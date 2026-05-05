@@ -1,0 +1,401 @@
+:root {
+	--meraki-canvas: #ffffff;
+	--meraki-ink: #111111;
+	--meraki-body: #222222;
+	--meraki-muted: #f2f2f2;
+	--meraki-border: #e4e4e4;
+	--meraki-ash: #6c6c6c;
+	--meraki-sage: #a8bf69;
+	--meraki-shell: min(1240px, calc(100vw - 48px));
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	color: var(--meraki-body);
+	background: var(--meraki-canvas);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: inherit;
+}
+
+.meraki-shell {
+	width: var(--meraki-shell);
+	margin: 0 auto;
+}
+
+.meraki-shell--wide {
+	width: min(1320px, calc(100vw - 64px));
+}
+
+.meraki-announcement-bar {
+	background: var(--meraki-ink);
+}
+
+.meraki-site-header {
+	border-bottom: 1px solid var(--meraki-border);
+	background: var(--meraki-canvas);
+}
+
+.meraki-site-header__inner {
+	min-height: 94px;
+	gap: 1rem;
+}
+
+.meraki-site-nav .wp-block-navigation__container {
+	gap: 1rem;
+}
+
+.meraki-site-nav a {
+	font-size: 0.92rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.meraki-site-brand {
+	transform: translateY(18px);
+}
+
+.meraki-site-main {
+	min-height: 40vh;
+}
+
+.meraki-home-hero {
+	display: flex;
+	align-items: end;
+	background:
+		radial-gradient(circle at top right, rgba(168, 191, 105, 0.28), transparent 34%),
+		linear-gradient(135deg, #111111 0%, #1d1d1d 62%, #303030 100%);
+}
+
+.meraki-category-mosaic {
+	padding: 12px;
+}
+
+.meraki-category-mosaic__grid {
+	gap: 12px;
+}
+
+.meraki-category-card .wp-block-cover__inner-container {
+	display: flex;
+	align-items: end;
+	justify-content: start;
+	height: 100%;
+	padding: 24px;
+}
+
+.meraki-category-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 2px;
+}
+
+.meraki-category-card--sage {
+	background: linear-gradient(180deg, #75884a 0%, #4c5b2b 100%);
+}
+
+.meraki-category-card--muted {
+	background: linear-gradient(180deg, #595959 0%, #2e2e2e 100%);
+}
+
+.meraki-category-card--ink {
+	background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+}
+
+.meraki-category-card--border {
+	background: linear-gradient(180deg, #8b8b8b 0%, #4a4a4a 100%);
+}
+
+.meraki-category-card--body {
+	background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 100%);
+}
+
+.meraki-category-card h3 {
+	margin-bottom: 12px;
+}
+
+.meraki-home-story {
+	border-top: 1px solid var(--meraki-border);
+}
+
+.meraki-post-card img {
+	display: block;
+	width: 100%;
+}
+
+.meraki-site-footer {
+	background: var(--meraki-ink);
+	margin-top: 48px;
+}
+
+.meraki-site-footer a {
+	text-decoration: none;
+}
+
+.meraki-shop-shell,
+.meraki-single-product-shell {
+	padding-top: 48px;
+	padding-bottom: 64px;
+}
+
+.meraki-shop-archive-header {
+	padding-bottom: 28px;
+}
+
+.meraki-shop-archive-title {
+	margin: 0 0 12px;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.1;
+}
+
+.meraki-shop-archive-description {
+	max-width: 720px;
+	color: var(--meraki-ash);
+}
+
+.meraki-shop-layout {
+	display: grid;
+	grid-template-columns: 220px minmax(0, 1fr);
+	gap: 32px;
+	align-items: start;
+}
+
+.meraki-shop-sidebar {
+	position: sticky;
+	top: 24px;
+	padding-top: 12px;
+}
+
+.meraki-shop-sidebar__fallback h2 {
+	font-size: 0.95rem;
+	margin-bottom: 10px;
+}
+
+.meraki-shop-sidebar__fallback ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.meraki-shop-sidebar__fallback li + li {
+	margin-top: 8px;
+}
+
+.meraki-product-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 28px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.meraki-product-card {
+	list-style: none;
+}
+
+.meraki-product-card__link {
+	display: block;
+	text-decoration: none;
+}
+
+.meraki-product-card__image {
+	background: #fafafa;
+	aspect-ratio: 1 / 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 18px;
+}
+
+.meraki-product-card__image img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+
+.meraki-product-card__content {
+	padding-top: 16px;
+	text-align: center;
+}
+
+.meraki-product-card__content h2 {
+	margin: 0 0 8px;
+	font-size: 1.02rem;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.meraki-single-product__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.8fr);
+	gap: 42px;
+}
+
+.meraki-single-product .woocommerce-product-gallery {
+	width: 100% !important;
+}
+
+.meraki-product-kicker {
+	font-size: 0.92rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--meraki-ash);
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+.meraki-single-product .product_title {
+	margin: 0 0 12px;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.05;
+}
+
+.meraki-single-product__price {
+	font-size: 1.3rem;
+	font-weight: 700;
+	margin-bottom: 18px;
+}
+
+.meraki-single-product__overview {
+	margin-bottom: 20px;
+	color: var(--meraki-body);
+}
+
+.mcc-trust-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 24px 0;
+}
+
+.mcc-trust-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 14px;
+	border: 1px solid var(--meraki-ink);
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.meraki-single-product__cart {
+	margin: 20px 0 28px;
+}
+
+.meraki-single-product__cart .single_add_to_cart_button {
+	background: var(--meraki-ink);
+	color: var(--meraki-canvas);
+	border: 1px solid var(--meraki-ink);
+	border-radius: 0;
+	padding: 14px 22px;
+}
+
+.meraki-single-product__cart .quantity .qty {
+	min-height: 46px;
+}
+
+.mcc-product-accordions {
+	display: grid;
+	gap: 12px;
+}
+
+.mcc-accordion {
+	border-top: 1px solid var(--meraki-border);
+	border-bottom: 1px solid var(--meraki-border);
+	background: var(--meraki-muted);
+}
+
+.mcc-accordion__summary {
+	cursor: pointer;
+	padding: 16px 18px;
+	font-weight: 700;
+	list-style: none;
+}
+
+.mcc-accordion__summary::-webkit-details-marker {
+	display: none;
+}
+
+.mcc-accordion__content {
+	padding: 0 18px 18px;
+}
+
+.mcc-coa-meta-summary {
+	font-size: 0.9rem;
+	color: var(--meraki-ash);
+}
+
+.mcc-lab-results {
+	display: grid;
+	gap: 28px;
+}
+
+.mcc-lab-results__heading {
+	margin-bottom: 14px;
+}
+
+.mcc-lab-results__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 8px;
+}
+
+.mcc-lab-results__item {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: baseline;
+}
+
+.mcc-lab-results__meta {
+	font-size: 0.88rem;
+	color: var(--meraki-ash);
+}
+
+@media (max-width: 1024px) {
+	.meraki-product-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.meraki-single-product__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 782px) {
+	.meraki-site-brand {
+		transform: none;
+	}
+
+	.meraki-shop-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.meraki-shop-sidebar {
+		position: static;
+	}
+
+	.meraki-product-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.meraki-shell,
+	.meraki-shell--wide {
+		width: min(100vw - 32px, 1320px);
+	}
+}
