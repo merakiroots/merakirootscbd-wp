@@ -43,8 +43,8 @@
       ],
       "fontFamilies": [
         {
-          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
-          "name": "Helvetica Neue",
+          "fontFamily": "\"Rubik\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "name": "Rubik",
           "slug": "primary"
         }
       ]
