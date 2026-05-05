@@ -10,8 +10,8 @@
 
 ?>
 <!-- wp:group {"tagName":"section","className":"meraki-home-hero","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"}}},"backgroundColor":"ink","layout":{"type":"constrained"}} -->
-<section class="wp-block-group meraki-home-hero has-ink-background-color has-background" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide"><!-- wp:paragraph {"textColor":"sage","fontSize":"sm"} -->
+<section class="wp-block-group meraki-home-hero has-ink-background-color has-background" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"align":"wide","className":"meraki-home-hero__content","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide meraki-home-hero__content"><!-- wp:paragraph {"textColor":"sage","fontSize":"sm"} -->
 <p class="has-sage-color has-text-color has-sm-font-size">Giving Back</p>
 <!-- /wp:paragraph -->
 
