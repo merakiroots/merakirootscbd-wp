@@ -5,21 +5,27 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"tagName":"header","className":"meraki-site-header","layout":{"type":"constrained"}} -->
-<header class="wp-block-group meraki-site-header"><!-- wp:group {"align":"wide","className":"meraki-site-header__inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
-<div class="wp-block-group alignwide meraki-site-header__inner"><!-- wp:navigation {"overlayMenu":"mobile","className":"meraki-site-nav meraki-site-nav--left","layout":{"type":"flex","justifyContent":"left"}} -->
+<header class="wp-block-group meraki-site-header"><!-- wp:group {"align":"full","className":"meraki-site-header__band","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull meraki-site-header__band"><!-- wp:group {"align":"wide","className":"meraki-site-header__inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide meraki-site-header__inner"><!-- wp:group {"className":"meraki-site-nav-shell meraki-site-nav-shell--left","layout":{"type":"constrained"}} -->
+<div class="wp-block-group meraki-site-nav-shell meraki-site-nav-shell--left"><!-- wp:navigation {"overlayMenu":"mobile","className":"meraki-site-nav meraki-site-nav--left","layout":{"type":"flex","justifyContent":"left"}} -->
 <!-- wp:navigation-link {"label":"Shop","url":"/shop/"} /-->
 <!-- wp:navigation-link {"label":"Learn","url":"/blog/"} /-->
 <!-- wp:navigation-link {"label":"About","url":"/about/"} /-->
-<!-- /wp:navigation -->
+<!-- /wp:navigation --></div>
+<!-- /wp:group -->
 
 <!-- wp:group {"className":"meraki-site-brand","layout":{"type":"constrained"}} -->
 <div class="wp-block-group meraki-site-brand"><!-- wp:site-logo {"width":92,"shouldSyncIcon":false} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:navigation {"overlayMenu":"mobile","className":"meraki-site-nav meraki-site-nav--right","layout":{"type":"flex","justifyContent":"right"}} -->
+<!-- wp:group {"className":"meraki-site-nav-shell meraki-site-nav-shell--right","layout":{"type":"constrained"}} -->
+<div class="wp-block-group meraki-site-nav-shell meraki-site-nav-shell--right"><!-- wp:navigation {"overlayMenu":"mobile","className":"meraki-site-nav meraki-site-nav--right","layout":{"type":"flex","justifyContent":"right"}} -->
 <!-- wp:navigation-link {"label":"Lab Results","url":"/lab-results/"} /-->
 <!-- wp:navigation-link {"label":"Partner","url":"/partner/"} /-->
 <!-- wp:navigation-link {"label":"Contact","url":"/contact/"} /-->
 <!-- /wp:navigation --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></header>
 <!-- /wp:group -->
