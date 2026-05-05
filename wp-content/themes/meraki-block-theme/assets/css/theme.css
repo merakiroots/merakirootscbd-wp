@@ -19,7 +19,7 @@ body {
 	margin: 0;
 	color: var(--meraki-body);
 	background: var(--meraki-canvas);
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -44,9 +44,26 @@ a {
 	background: var(--meraki-canvas);
 }
 
+.meraki-site-header__band {
+	background: linear-gradient(90deg, #ffffff 0 50%, #000000 50% 100%);
+}
+
 .meraki-site-header__inner {
 	min-height: 94px;
 	gap: 1rem;
+	position: relative;
+}
+
+.meraki-site-nav-shell {
+	flex: 1 1 0;
+}
+
+.meraki-site-nav-shell--left {
+	color: var(--meraki-body);
+}
+
+.meraki-site-nav-shell--right {
+	color: var(--meraki-canvas);
 }
 
 .meraki-site-nav .wp-block-navigation__container {
@@ -60,7 +77,9 @@ a {
 }
 
 .meraki-site-brand {
-	transform: translateY(18px);
+	position: relative;
+	z-index: 2;
+	transform: translateY(16px);
 }
 
 .meraki-site-main {
@@ -73,10 +92,15 @@ a {
 	background:
 		radial-gradient(circle at top right, rgba(168, 191, 105, 0.28), transparent 34%),
 		linear-gradient(135deg, #111111 0%, #1d1d1d 62%, #303030 100%);
+	min-height: clamp(420px, 62vw, 640px);
+}
+
+.meraki-home-hero__content {
+	max-width: 620px;
 }
 
 .meraki-category-mosaic {
-	padding: 12px;
+	padding: 4px 0 0;
 }
 
 .meraki-category-mosaic__grid {
@@ -92,30 +116,8 @@ a {
 }
 
 .meraki-category-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	border-radius: 2px;
-}
-
-.meraki-category-card--sage {
-	background: linear-gradient(180deg, #75884a 0%, #4c5b2b 100%);
-}
-
-.meraki-category-card--muted {
-	background: linear-gradient(180deg, #595959 0%, #2e2e2e 100%);
-}
-
-.meraki-category-card--ink {
-	background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
-}
-
-.meraki-category-card--border {
-	background: linear-gradient(180deg, #8b8b8b 0%, #4a4a4a 100%);
-}
-
-.meraki-category-card--body {
-	background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 100%);
+	border-radius: 0;
+	overflow: hidden;
 }
 
 .meraki-category-card h3 {
@@ -123,6 +125,11 @@ a {
 }
 
 .meraki-home-story {
+	border-top: 1px solid var(--meraki-border);
+}
+
+.meraki-home-featured,
+.meraki-home-learn {
 	border-top: 1px solid var(--meraki-border);
 }
 
