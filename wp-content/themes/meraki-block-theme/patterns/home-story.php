@@ -12,16 +12,22 @@
 <section class="wp-block-group meraki-home-story" style="padding-top:72px;padding-bottom:72px"><!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%"><!-- wp:paragraph {"textColor":"ash","fontSize":"sm"} -->
-<p class="has-ash-color has-text-color has-sm-font-size">Premium CBD</p>
+<p class="has-ash-color has-text-color has-sm-font-size">PREMIUM CBD</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"fontSize":"xl"} -->
-<h2 class="wp-block-heading has-xl-font-size">From your roots up, everything should feel clear.</h2>
+<h2 class="wp-block-heading has-xl-font-size">Meraki Roots</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Meraki Roots is best served by a storefront that keeps the interface clean, puts the product photography first, and makes ingredients, suggested use, warnings, and lab results easy to trust.</p>
-<!-- /wp:paragraph --></div>
+<p>From your roots up, you're striving every day to live your life passionately through love, creativity, and expression. We're here to help you blossom.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"ink","textColor":"canvas"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-canvas-color has-ink-background-color has-text-color has-background wp-element-button" href="/about/">Learn More</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
