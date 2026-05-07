@@ -97,3 +97,16 @@ The local VS Code-style `.vscode/mcp.json` in this workspace points at `npm run 
 ## Notes
 
 Docker Desktop must be running for `wp_cli`, Docker Compose, PHP lint/static analysis, and PHPUnit tools. When Docker is unavailable, the MCP server returns the real container error while still allowing source inspection and log reads.
+
+## WordPress Engineering Copilot Skill (Local)
+
+A local Codex-style skill scaffold is included at:
+
+- `.agents/skills/wordpress-engineering-copilot/SKILL.md`
+
+Use this as the baseline system prompt/profile for WordPress + WooCommerce implementation, code review, migration planning, and secure development workflows in this repo. It captures:
+
+- migration-first defaults for Shopify → WooCommerce relaunches
+- WooCommerce/HPOS-safe implementation guidance
+- WordPress security and code-quality guardrails
+- pragmatic routing between theme, plugin, backend, and QA workflows
